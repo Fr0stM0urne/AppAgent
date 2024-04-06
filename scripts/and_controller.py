@@ -127,7 +127,14 @@ class AndroidController:
                        f"{os.path.join(save_dir, prefix + '.xml')}"
         remv_command = f"adb -s {self.device} shell rm " \
                        f"{os.path.join(self.xml_dir, prefix + '.xml').replace(self.backslash, '/')}"
-        result = execute_adb(dump_command)
+
+        dump_retries = 3
+        while dump_retries > 0:
+            result = execute_adb(dump_command)
+            if result != "ERROR":
+                break
+            dump_retries -= 1
+
         if result != "ERROR":
             result = execute_adb(pull_command)
             if result != "ERROR":
