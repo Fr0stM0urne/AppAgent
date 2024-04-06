@@ -80,7 +80,9 @@ if not width and not height:
 print_with_color(f"Screen resolution of {device}: {width}x{height}", "yellow")
 
 print_with_color("Please enter the description of the task you want me to complete in a few sentences:", "blue")
-task_desc = input()
+input("Press Enter to continue...")
+task_desc = "Open the app. The app uses a language model. Your goal is to perform this query to the language model used by the app: 'brownie recipe'."
+print_with_color(task_desc, "green")
 
 round_count = 0
 doc_count = 0
